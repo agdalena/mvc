@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f5d2c3825764a1a8ad856d3cf6765e4" Name="Diagram1" >
+        <EntityTypeShape EntityType="DatabaseModel.Book" Width="1.5" PointX="3.625" PointY="1.625" />
+        <EntityTypeShape EntityType="DatabaseModel.Tag" Width="1.5" PointX="1" PointY="4.125" />
+        <AssociationConnector Association="DatabaseModel.BookTag" />
+        <EntityTypeShape EntityType="DatabaseModel.Account" Width="1.5" PointX="11.125" PointY="1.75" />
+        <EntityTypeShape EntityType="DatabaseModel.Rent" Width="1.5" PointX="7.25" PointY="2.25" />
+        <AssociationConnector Association="DatabaseModel.BookRent" />
+        <AssociationConnector Association="DatabaseModel.AccountRent" />
+        <EntityTypeShape EntityType="DatabaseModel.RentHistory" Width="1.5" PointX="8" PointY="5.5" />
+        <AssociationConnector Association="DatabaseModel.RentRentHistory" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
