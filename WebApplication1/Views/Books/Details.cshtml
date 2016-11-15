@@ -1,0 +1,87 @@
+﻿@*@model WebApplication1.Models.Book*@
+@model 
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            Category
+        </dt>
+
+        <dd>
+            @{
+                foreach (var category in Model.BookCategories)
+                {
+                    <t>@category.Category.Name</t>
+                }
+            }
+        </dd>
+
+        <dt>
+            Tags
+        </dt>
+
+        <dd>
+            @{ 
+                int k = 1;
+                int i = Model.BookTags.Count();
+
+                foreach(var tag in Model.BookTags)
+                {
+                    if (k==i)
+                    {
+                        <t>@tag.Tag.Name</t> 
+                    }
+                    else
+                    {
+                        <t>@tag.Tag.Name<t>, </t></t>
+                    }
+                    k++;
+                }
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
