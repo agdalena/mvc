@@ -74,19 +74,6 @@
             @Html.DisplayFor(model => model.Surname)
         </dd>
 
-        <dt>
-            Rent Story
-        </dt>
-
-        <dd>
-            @foreach (var story in Model.Rents)
-            {
-                <div>
-                    @story.Book.Title @story.RentDate
-                </div>
-            }
-        </dd>
-
     </dl>
 </div>
 <p>

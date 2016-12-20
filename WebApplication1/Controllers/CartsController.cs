@@ -11,107 +11,112 @@ using WebApplication1.Models.DAL;
 
 namespace WebApplication1.Controllers
 {
-    public class AccountsController : Controller
+    public class CartsController : Controller
     {
         private LibraryContext db = new LibraryContext();
 
-        // GET: Accounts
+        // GET: Carts
         public ActionResult Index()
         {
-            return View(db.Accounts.ToList());
+            var carts = db.Carts.Include(c => c.Account);
+            return View(carts.ToList());
         }
 
-        // GET: Accounts/Details/5
+        // GET: Carts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            Cart cart = db.Carts.Find(id);
+            if (cart == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(cart);
         }
 
-        // GET: Accounts/Create
+        // GET: Carts/Create
         public ActionResult Create()
         {
+            ViewBag.AccountID = new SelectList(db.Accounts, "AccountID", "Login");
             return View();
         }
 
-        // POST: Accounts/Create
+        // POST: Carts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccountID,Login,Password,Permission,Mail,Question,Answer,Name,Surname")] Account account)
+        public ActionResult Create([Bind(Include = "CartID,Title,Author,ISBN,State,AccountID")] Cart cart)
         {
             if (ModelState.IsValid)
             {
-                db.Accounts.Add(account);
+                db.Carts.Add(cart);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(account);
+            ViewBag.AccountID = new SelectList(db.Accounts, "AccountID", "Login", cart.AccountID);
+            return View(cart);
         }
 
-        // GET: Accounts/Edit/5
+        // GET: Carts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            Cart cart = db.Carts.Find(id);
+            if (cart == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            ViewBag.AccountID = new SelectList(db.Accounts, "AccountID", "Login", cart.AccountID);
+            return View(cart);
         }
 
-        // POST: Accounts/Edit/5
+        // POST: Carts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccountID,Login,Password,Permission,Mail,Question,Answer,Name,Surname")] Account account)
+        public ActionResult Edit([Bind(Include = "CartID,Title,Author,ISBN,State,AccountID")] Cart cart)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(account).State = EntityState.Modified;
+                db.Entry(cart).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(account);
+            ViewBag.AccountID = new SelectList(db.Accounts, "AccountID", "Login", cart.AccountID);
+            return View(cart);
         }
 
-        // GET: Accounts/Delete/5
+        // GET: Carts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            Cart cart = db.Carts.Find(id);
+            if (cart == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(cart);
         }
 
-        // POST: Accounts/Delete/5
+        // POST: Carts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Account account = db.Accounts.Find(id);
-            db.Accounts.Remove(account);
+            Cart cart = db.Carts.Find(id);
+            db.Carts.Remove(cart);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

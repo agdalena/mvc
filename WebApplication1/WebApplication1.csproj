@@ -172,6 +172,7 @@
     <Compile Include="Controllers\BookCategoriesController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\BookTagsController.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RentsController.cs" />
@@ -191,11 +192,16 @@
     <Compile Include="Migrations\201611142119569_3.Designer.cs">
       <DependentUpon>201611142119569_3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612122334292_4.cs" />
+    <Compile Include="Migrations\201612122334292_4.Designer.cs">
+      <DependentUpon>201612122334292_4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookCategory.cs" />
     <Compile Include="Models\BookTag.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DAL\LibraryContext.cs" />
     <Compile Include="Models\Rent.cs" />
@@ -280,6 +286,11 @@
     <Content Include="Views\BookCategories\Details.cshtml" />
     <Content Include="Views\BookCategories\Edit.cshtml" />
     <Content Include="Views\BookCategories\Index.cshtml" />
+    <Content Include="Views\Carts\Create.cshtml" />
+    <Content Include="Views\Carts\Delete.cshtml" />
+    <Content Include="Views\Carts\Details.cshtml" />
+    <Content Include="Views\Carts\Edit.cshtml" />
+    <Content Include="Views\Carts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -303,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611142119569_3.resx">
       <DependentUpon>201611142119569_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612122334292_4.resx">
+      <DependentUpon>201612122334292_4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

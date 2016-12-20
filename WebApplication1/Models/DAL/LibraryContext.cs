@@ -21,6 +21,7 @@ namespace WebApplication1.Models.DAL
         public DbSet<Rent> Rents { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<BookCategory> BookCategories { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

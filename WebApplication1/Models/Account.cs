@@ -18,6 +18,6 @@ namespace WebApplication1.Models
         public string Surname { get; set; }
 
         public virtual ICollection<Rent> Rents { get; set; }
-
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }
