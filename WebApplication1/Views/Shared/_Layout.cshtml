@@ -16,21 +16,52 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("BiblioteQa", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                    <li>@Html.ActionLink("Books", "Index", "Books")</li>
-                    <li>@Html.ActionLink("Tags", "Index", "Tags")</li>
-                    <li>@Html.ActionLink("Accounts", "Index", "Accounts")</li>
-                    <li>@Html.ActionLink("Rents", "Index", "Rents")</li>
-                    <li>@Html.ActionLink("BookTags", "Index", "BookTags")</li>
-                    <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
-                    <li>@Html.ActionLink("BookCategories","Index","BookCategories")</li>
+                    @if (WebApplication1.Helper.Methods.CheckIsActive()==true)
+                    {
+                        if (WebApplication1.Helper.Methods.CheckUserPermission())
+                        {
+                            <li>@Html.ActionLink("Lista książek", "Index", "UserBook")</li>
+                            <li>@Html.ActionLink("Archiwum wypożyczeń", "", "Rents")</li>
+                            <li>@Html.ActionLink("Koszyk", "Index", "Carts")</li>
+                            <li>@Html.ActionLink("Wyszukaj", "Index", "Search")</li>
+                        }
+
+                        if (WebApplication1.Helper.Methods.CheckWorkerPermission())
+                        {
+                            <li>@Html.ActionLink("Zarządzaj książkami", "Index", "Books")</li>
+                            <li>@Html.ActionLink("Lista tagów", "Index", "Tags")</li>
+                            <li>@Html.ActionLink("Spis kategorii", "Index", "Categories")</li>
+                            <li>@Html.ActionLink("Przypisz tag", "Index", "BookTags")</li>
+                            <li>@Html.ActionLink("Przypisz kategorię", "Index", "BookCategories")</li>
+                            <li>@Html.ActionLink("Wyszukaj", "IndexWorker", "Search")</li>
+                        }
+
+                        if (WebApplication1.Helper.Methods.CheckAdminPermission())
+                        {
+                            <li>@Html.ActionLink("Zarządzaj kontami", "Index", "Accounts")</li>
+                            <li>@Html.ActionLink("Zarządzaj wiadomościami", "Index", "Messages")</li>
+                        }
+                    }
+
+
+
+                    @if (WebApplication1.Helper.Methods.UserId == null)
+                    {
+                        <li>@Html.ActionLink("Zaloguj", "Login", "Login")</li>
+                        <li>@Html.ActionLink("Zarejestruj", "Register", "Login")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink(WebApplication1.Helper.Methods.UserMail, "", "")</li>
+                        <li>@Html.ActionLink("Wyloguj", "LogOut", "Login")</li>
+                    }
+
+
                 </ul>
             </div>
         </div>
@@ -39,6 +70,7 @@
         @RenderBody()
         <hr />
         <footer>
+            @WebApplication1.Helper.Methods.CheckIsActive().ToString()
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>

@@ -14,6 +14,7 @@ namespace WebApplication1.Models
         public string Mail { get; set; }
         public string Question { get; set; }
         public string Answer { get; set; }
+        public bool IsActive { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
 

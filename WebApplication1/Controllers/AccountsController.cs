@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccountID,Login,Password,Permission,Mail,Question,Answer,Name,Surname")] Account account)
+        public ActionResult Create([Bind(Include = "AccountID,Login,Password,Permission,Mail,Question,Answer,IsActive,Name,Surname")] Account account)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccountID,Login,Password,Permission,Mail,Question,Answer,Name,Surname")] Account account)
+        public ActionResult Edit([Bind(Include = "AccountID,Login,Password,Permission,Mail,Question,Answer,IsActive,Name,Surname")] Account account)
         {
             if (ModelState.IsValid)
             {

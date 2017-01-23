@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
+using WebApplication1.Helper;
 using WebApplication1.Models.DAL;
 
 namespace WebApplication1.Controllers
@@ -18,7 +19,7 @@ namespace WebApplication1.Controllers
         // GET: Carts
         public ActionResult Index()
         {
-            var carts = db.Carts.Include(c => c.Account);
+            var carts = db.Carts.Include(c => c.Account).Where(a => a.AccountID == Methods.UserId);
             return View(carts.ToList());
         }
 
@@ -128,6 +129,29 @@ namespace WebApplication1.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult RentBook(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cart cart = db.Carts.Find(id);
+            if (cart == null)
+            {
+                return HttpNotFound();
+            }
+            Rent rent = new Rent();
+            rent.AccountID = Methods.UserId.GetValueOrDefault();
+            rent.BookID = id.GetValueOrDefault();
+            rent.RentDate = DateTime.Now.ToString();
+            rent.EndDate = "";
+            db.Rents.Add(rent);
+            db.Carts.Remove(cart);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Rents");
+
         }
     }
 }

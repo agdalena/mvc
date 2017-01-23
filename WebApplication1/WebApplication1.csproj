@@ -175,26 +175,27 @@
     <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\RentsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
+    <Compile Include="Controllers\UserBookController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Methods.cs" />
     <Compile Include="Migrations\201611140032296_1.cs" />
     <Compile Include="Migrations\201611140032296_1.Designer.cs">
       <DependentUpon>201611140032296_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611142058463_2.cs" />
-    <Compile Include="Migrations\201611142058463_2.Designer.cs">
-      <DependentUpon>201611142058463_2.cs</DependentUpon>
+    <Compile Include="Migrations\201701220722466_2.cs" />
+    <Compile Include="Migrations\201701220722466_2.Designer.cs">
+      <DependentUpon>201701220722466_2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611142119569_3.cs" />
-    <Compile Include="Migrations\201611142119569_3.Designer.cs">
-      <DependentUpon>201611142119569_3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612122334292_4.cs" />
-    <Compile Include="Migrations\201612122334292_4.Designer.cs">
-      <DependentUpon>201612122334292_4.cs</DependentUpon>
+    <Compile Include="Migrations\201701221339506_3.cs" />
+    <Compile Include="Migrations\201701221339506_3.Designer.cs">
+      <DependentUpon>201701221339506_3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -204,8 +205,11 @@
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DAL\LibraryContext.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Rent.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Models\Tag.cs" />
+    <Compile Include="ModelView\HomeModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,8 +252,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Tags\Create.cshtml" />
     <Content Include="Views\Tags\Delete.cshtml" />
@@ -266,11 +268,6 @@
     <Content Include="Views\Accounts\Details.cshtml" />
     <Content Include="Views\Accounts\Edit.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
-    <Content Include="Views\Rents\Create.cshtml" />
-    <Content Include="Views\Rents\Delete.cshtml" />
-    <Content Include="Views\Rents\Details.cshtml" />
-    <Content Include="Views\Rents\Edit.cshtml" />
-    <Content Include="Views\Rents\Index.cshtml" />
     <Content Include="Views\Books\Create.cshtml" />
     <Content Include="Views\Books\Delete.cshtml" />
     <Content Include="Views\Books\Details.cshtml" />
@@ -291,6 +288,24 @@
     <Content Include="Views\Carts\Details.cshtml" />
     <Content Include="Views\Carts\Edit.cshtml" />
     <Content Include="Views\Carts\Index.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\UserBook\Details.cshtml" />
+    <Content Include="Views\UserBook\Index.cshtml" />
+    <Content Include="Views\Rents\Create.cshtml" />
+    <Content Include="Views\Rents\Delete.cshtml" />
+    <Content Include="Views\Rents\Details.cshtml" />
+    <Content Include="Views\Rents\Edit.cshtml" />
+    <Content Include="Views\Rents\Index.cshtml" />
+    <Content Include="Views\Messages\Create.cshtml" />
+    <Content Include="Views\Messages\Delete.cshtml" />
+    <Content Include="Views\Messages\Details.cshtml" />
+    <Content Include="Views\Messages\Edit.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\IndexWorker.cshtml" />
+    <Content Include="Views\Login\Remind.cshtml" />
+    <Content Include="Views\Login\Question.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -309,14 +324,11 @@
     <EmbeddedResource Include="Migrations\201611140032296_1.resx">
       <DependentUpon>201611140032296_1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611142058463_2.resx">
-      <DependentUpon>201611142058463_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701220722466_2.resx">
+      <DependentUpon>201701220722466_2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611142119569_3.resx">
-      <DependentUpon>201611142119569_3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612122334292_4.resx">
-      <DependentUpon>201612122334292_4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701221339506_3.resx">
+      <DependentUpon>201701221339506_3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

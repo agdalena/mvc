@@ -11,7 +11,8 @@ namespace WebApplication1.Models
         public int RentID {get; set;}
         public int AccountID {get; set;}
         public int BookID {get; set;}
-        public DateTime RentDate { get; set; }
+        public string RentDate { get; set; }
+        public string EndDate { get; set; }
 
         public virtual Account Account { get; set; }
         public virtual Book Book { get; set; }
