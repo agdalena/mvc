@@ -14,49 +14,64 @@
 }
 
 
-<h4>Zaloguj się!</h4>
+     
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <article class="col-xs-12 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Zaloguj się!</h1>
+                </header>
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Login) } }) <br />
-            @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger", Id = "errorLogIn" })
-        </div>
+                    
 
-        <br />
 
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Password) } }) <br />
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger", Id = "errorLogIn" })
-        </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Login) } }) <br />
+                        @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger", Id = "errorLogIn" })
+                    </div>
 
-        @if (WebApplication1.Helper.Methods.RegisterSuccess == null)
-        {
-            if (WebApplication1.Helper.Methods.LoginFailed != null)
-            {
-                <div id="errorLogIn">
-                    Podano niepoprawny login lub haslo
+                    <br />
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Password) } }) <br />
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger", Id = "errorLogIn" })
+                    </div>
+
+                    <br />
+
+                    @if (WebApplication1.Helper.Methods.RegisterSuccess == null)
+                {
+                    if (WebApplication1.Helper.Methods.LoginFailed != null)
+                    {
+                            <div id="errorLogIn">
+                                Podano niepoprawny login lub haslo
+                            </div>
+                        }
+                    }
+
+
+
+                    <div class="row">
+                  
+                        <div class="col-lg-7 text-right">
+                            <input class="btn btn-action" type="submit" value="Zaloguj" />
+                        </div>
+                    </div>
+
+
                 </div>
-            }
-        }
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input class="button success" type="submit" value="Zaloguj" />
-            </div>
+            </article>
         </div>
-    </div>
-}
+    }
 
-<h3>Nie posiadasz jeszcze konta? </h3>
-<h3>Przejdź do <a href="@Url.Action("Register", "Login")">rejestracji!</a></h3>
+    <h4>Nie posiadasz jeszcze konta? </h4>
+    <h4>Przejdź do <a href="@Url.Action("Register", "Login")">rejestracji!</a></h4>
+
 

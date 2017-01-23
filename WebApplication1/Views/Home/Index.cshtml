@@ -30,10 +30,12 @@
     </div>
 </div>*@
 
-<div>
-    @if(!WebApplication1.Helper.Methods.CheckIsActive())
-    {
-        <br />
-        <p>Nie posiadasz uprawnień do pełnego korzystania z serwisu. Informacja o Twojej rejestracji została przesłana do administracji. Poczekaj na akceptację konta</p>
-    }
-</div>
+    <div>
+        @if (!WebApplication1.Helper.Methods.CheckIsActive())
+        {
+            <br />
+            <p class="tekst">Nie posiadasz uprawnień do pełnego korzystania z serwisu.</p> 
+            <p class="tekst">Informacja o Twojej rejestracji została przesłana do administracji. Poczekaj na akceptację konta</p>
+        }
+    
+</header>

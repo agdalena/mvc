@@ -21,11 +21,16 @@ namespace WebApplication1
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/google-map.js",
+                      "~/Scripts/headroom.min.js",
+                      "~/Scripts/html5shiv.js",
+                      "~/Scripts/respond.min.js",
+                      "~/Scripts/template.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/bootstrap-theme.css",
+                      "~/Content/main.css"));
         }
     }
 }

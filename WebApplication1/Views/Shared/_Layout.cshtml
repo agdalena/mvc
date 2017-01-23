@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body class="home">
+    <div class="navbar navbar-inverse navbar-fixed-top headroom">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,7 +19,7 @@
                 @Html.ActionLink("BiblioteQa", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav pull-right">
 
                     @if (WebApplication1.Helper.Methods.CheckIsActive()==true)
                     {
@@ -52,13 +52,13 @@
 
                     @if (WebApplication1.Helper.Methods.UserId == null)
                     {
-                        <li>@Html.ActionLink("Zaloguj", "Login", "Login")</li>
-                        <li>@Html.ActionLink("Zarejestruj", "Register", "Login")</li>
+                        <li class="btn">@Html.ActionLink("Zaloguj", "Login", "Login")</li>
+                        <li class="btn">@Html.ActionLink("Zarejestruj", "Register", "Login")</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink(WebApplication1.Helper.Methods.UserMail, "", "")</li>
-                        <li>@Html.ActionLink("Wyloguj", "LogOut", "Login")</li>
+                        <li class="btn">@Html.ActionLink(WebApplication1.Helper.Methods.UserMail, "", "")</li>
+                        <li class="btn">@Html.ActionLink("Wyloguj", "LogOut", "Login")</li>
                     }
 
 
@@ -66,14 +66,63 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            @WebApplication1.Helper.Methods.CheckIsActive().ToString()
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    <header id="head">
+        <header id="head3">
+            <div class="container">
+                <div class="row">
+                    @RenderBody()
+                    <hr />
+                </div>
+            </div>
+        </header>
+
+            <footer id="footer" class="top-space">
+                <div class="footer1">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-3 widget">
+                                <h3 class="widget-title">Contact</h3>
+                                <div class="widget-body">
+                                    <p>
+                                        +234 23 9873237<br>
+                                        <a href="mailto:#">some.email@somewhere.com</a><br>
+                                        <br>
+                                        234 Hidden Pond Road, Ashland City, TN 37015
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 widget">
+                                <h3 class="widget-title">Follow me</h3>
+                                <div class="widget-body">
+                                    <p class="follow-me-icons">
+                                        <a href=""><i class="fa fa-twitter fa-2"></i></a>
+                                        <a href=""><i class="fa fa-dribbble fa-2"></i></a>
+                                        <a href=""><i class="fa fa-github fa-2"></i></a>
+                                        <a href=""><i class="fa fa-facebook fa-2"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 widget">
+                                <h3 class="widget-title">Text widget</h3>
+                                <div class="widget-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?</p>
+                                    <p>Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.</p>
+                                </div>
+                            </div>
+
+                        </div> <!-- /row of widgets -->
+                    </div>
+                </div>
+                <div class="footer2">
+                    @WebApplication1.Helper.Methods.CheckIsActive().ToString()
+                    <p class="text-right">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </div>
+            </footer>
+
+</header>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
