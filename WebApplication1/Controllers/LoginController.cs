@@ -90,7 +90,7 @@ namespace WebApplication1.Controllers
         public ActionResult Remind([Bind(Include = "Mail")]Account account)
         {
             var checkData = db.Accounts.Single(u => u.Mail == account.Mail);
-            if (checkData!=null)
+            if (checkData != null)
             {
                 return RedirectToAction("Question", "Login", new { id = checkData.AccountID });
             }
@@ -99,31 +99,43 @@ namespace WebApplication1.Controllers
 
         public ActionResult Question(int? id)
         {
-            var checkData = db.Accounts.Single(u => u.AccountID == id);
+            if (id != null)
+            {
+                Account checkData = db.Accounts.Single(u => u.AccountID == id);
+                ViewBag.Question = checkData.Question;
+            }
             return View();
         }
 
         [HttpPost]
         public ActionResult Question([Bind(Include = "Answer")]Account account, int? id)
         {
-            var checkData = db.Accounts.Single(u => u.AccountID == id);
-            if (checkData != null)
-                if (checkData.Answer == account.Answer)
-                {
-                    var pass = checkData.Password;
-                  
-                }
+            if (ModelState.IsValid)
+            {
+
+                var checkData = db.Accounts.Single(u => u.AccountID == id);
+                if (checkData != null)
+                    if (checkData.Answer == account.Answer)
+                        return RedirectToAction("Pass", "Login", new { id = checkData.Password });
+
+            }
             return View();
         }
 
+        public ActionResult Pass(string id)
+        {
+            ViewBag.Password = id;
+            return View();
+        }
+
+
         public ActionResult LogOut()
         {
-            Methods.SaveUserSession(null, null,null,false);
+            Methods.SaveUserSession(null, null, null, false);
             return RedirectToAction("Login", "Login");
         }
     }
 }
-
 
 
 
